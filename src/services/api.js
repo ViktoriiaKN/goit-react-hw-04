@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = REACT_APP_UNSPLASH_API_KEY;
+const API_KEY = import.meta.env.VITE_UNSPLASH_API_KEY;
 
 const unsplashApi = axios.create({
   baseURL: 'https://api.unsplash.com/',
@@ -9,12 +9,13 @@ const unsplashApi = axios.create({
   },
 });
 
-export const fetcImages = async (query, perPage = 5) => {
+export const fetcImages = async (query, perPage = 5, page = 1) => {
   try {
     const response = await unsplashApi.get('search/photos', {
       params: {
         query,
         perPage: perPage,
+        page,
       },
     });
     return response.data;

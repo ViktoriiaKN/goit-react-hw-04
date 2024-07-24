@@ -1,7 +1,7 @@
 
-const LoadMoreBtn = () => {
+const LoadMoreBtn = ({handleLoadMore}) => {
   return (
-    <div><button>Load more</button></div>
+    <div><button onClick={handleLoadMore}>Load more</button></div>
   )
 }
 
