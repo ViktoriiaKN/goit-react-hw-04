@@ -25,7 +25,9 @@ function App() {
       setImages(data.results);
       setPage(1);
     } catch (error) {
-      setError(error.message);
+      if(error.response && error.response.status === 403) {
+        setError(error.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -43,7 +45,9 @@ function App() {
       setImages((prevImages) => [...prevImages, ...data.results]);
       setPage((prevPage) => prevPage + 1);
     } catch (error) {
-      setError(error.message);
+      if(error.response && error.response.status === 403) {
+        setError(error.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -71,7 +75,7 @@ function App() {
         handleQueryChange={handleQueryChange}
       />
       {loading && <Loader />}
-      {error && <ErrorMessage />}
+      {error && <ErrorMessage error={error}/>}
       {images.length > 0 && (
         <ImageGallery images={images} handleImageClick={handleImageClick} />
       )}

@@ -8,4 +8,4 @@ const ImageCard = ({image}) => {
   )
 }
 
-export default ImageCard
+export default ImageCard;

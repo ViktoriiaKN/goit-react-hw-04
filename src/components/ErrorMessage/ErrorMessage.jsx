@@ -1,8 +1,8 @@
 import styles from './ErrorMessage.module.css';
 
-const ErrorMessage = () => {
+const ErrorMessage = ({error}) => {
   return (
-    <div className={styles.ErrorMessage}>Something went wrong. Try one more time, please.</div>
+    <div className={styles.ErrorMessage}><p>{error}</p></div>
   )
 }
 

@@ -3,28 +3,30 @@ import styles from './ImageModal.module.css';
 
 ReactModal.setAppElement('#root'); 
 
-const ImageModal = ({image, closeModal}) => {
-if(!image) return null; // If no image is provided, return nothing
+const ImageModal = ({modalImage, closeModal}) => {
+if(!modalImage) return null; // If no image is provided, return nothing
 
 return (
   <ReactModal
-    isOpen={!!image} // Open modal if an image is provided
+    isOpen={!!modalImage} // Open modal if an image is provided
     onRequestClose={closeModal} // Close modal when the request to close is made
     contentLabel="Image Modal" // Label for screen readers
     className={styles.modal}
     overlayClassName={styles.overlay}
+    style={{
+      overlay: {
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+      },
+    }}
   >
-    <div>
+    <div style={{position: 'relative'}}>
       <button onClick={closeModal} className={styles.closeButton}>
-        Close
+        Close 
       </button>
-      <img src={image.urls.regular} alt={image.alt_description} className={styles.image} />
-      <p>{image.description || 'No description'}</p>
-      <p>By {image.user.name}</p>
-      <p>Likes: {image.likes}</p>
+      <img src={modalImage.urls.regular} alt={modalImage.alt_description} className={styles.image} />
     </div>
   </ReactModal>
 );
 };
 
-export default ImageModal
+export default ImageModal;
