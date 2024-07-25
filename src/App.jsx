@@ -23,6 +23,7 @@ function App() {
     try {
       const data = await fetcImages(seachQuery);
       setImages(data.results);
+      setPage(1);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -74,7 +75,7 @@ function App() {
       {images.length > 0 && (
         <ImageGallery images={images} handleImageClick={handleImageClick} />
       )}
-      {images.length > 0 && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
+      {images.length > 0 && !loading && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
       {modalImage && (
         <ImageModal modalImage={modalImage} closeModal={closeModal} />
       )}

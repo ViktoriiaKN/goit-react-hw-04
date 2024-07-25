@@ -1,5 +1,6 @@
 
 import toast from "react-hot-toast";
+import styles from './SearchBar.module.css';
 
 const SearchBar = ({ query, onSubmit, handleQueryChange }) => {
 
@@ -18,8 +19,8 @@ const SearchBar = ({ query, onSubmit, handleQueryChange }) => {
   };
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
+    <header className={styles.searchBar}>
+      <form onSubmit={handleSubmit} className={styles.searchForm}>
         <input
           type="text"
           autoComplete="off"
@@ -27,8 +28,9 @@ const SearchBar = ({ query, onSubmit, handleQueryChange }) => {
           placeholder="Search images and photos"
           value={query} // Binds the input value to the state
           onChange={handleChange} // Calls handleChange on text input change
+          className={styles.searchInput}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={styles.searchButton}>Search</button>
       </form>
     </header>
   );

@@ -1,7 +1,8 @@
+import styles from './LoadMoreBtn.module.css';
 
 const LoadMoreBtn = ({handleLoadMore}) => {
   return (
-    <div><button onClick={handleLoadMore}>Load more</button></div>
+    <div className={styles.loadMoreContainer}><button onClick={handleLoadMore} className={styles.loadMoreButton}>Load more</button></div>
   )
 }
 

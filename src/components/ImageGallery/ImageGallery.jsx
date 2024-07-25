@@ -1,19 +1,15 @@
 import ImageCard from '../ImageCard/ImageCard';
+import styles from './ImageGallery.module.css';
 
-const ImageGallery = ({images, handleImageClick}) => {
+const ImageGallery = ({ images, handleImageClick }) => {
   return (
-    <div>
-      <ul>
-	{images.map((image) => (
-		<li key={image.id}>
-		<div onClick={() => handleImageClick(image)}>
-	<ImageCard image={image}/>
-		</div>
-	</li>
-	))}
-	
-</ul>
-    </div>
+    <ul className={styles.gallery}>
+      {images.map((image) => (
+        <li key={image.id} onClick={() => handleImageClick(image)}>
+          <ImageCard image={image} />
+        </li>
+      ))}
+    </ul>
   );
 };
 
