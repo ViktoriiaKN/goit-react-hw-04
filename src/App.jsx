@@ -5,7 +5,7 @@ import ImageGallery from './components/ImageGallery/ImageGallery';
 import Loader from './components/Loader/Loader';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import ImageModal from './components/ImageModal/ImageModal';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { fetcImages } from './services/api';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [modalImage, setModalImage] = useState(null);
 
-  const handleSearch = async (seachQuery) => {
+  const handleSearch = useCallback(async (seachQuery) => {
     setLoading(true);
     setError(null);
 
@@ -31,7 +31,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   const handleQueryChange = (newQuery) => {
     setQuery(newQuery);
@@ -65,7 +65,7 @@ function App() {
     if (query) {
       handleSearch(query);
     }
-  }, [query]);
+  }, [query, handleSearch]);
 
   return (
     <div>
